@@ -1,0 +1,17 @@
+:root{
+    --dropMenuColor: #0040a7;
+    --navbarColor: #0048BA;
+    --white: #FFFFFF;
+}
+.nav-wrapper{
+    background-color: var(--navbarColor);
+}
+.dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+    top: 100% !important;
+    background-color: var(--navbarColor);
+ }
+ .dropdown-content li :hover{
+     background-color: var(--dropMenuColor);
+ }
