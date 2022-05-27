@@ -11,7 +11,7 @@ $view = $_GET['view'];
 <ul id="dropMenu" class="dropdown-content">
     <li><a class="white-text" href="?view=login">Clientes</a></li>
     <li class="divider"></li>
-    <li><a class="white-text" href="?view=logMedicos">Medicos</a></li>
+    <li><a class="black-text" href="?view=logMedicos">Medicos</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper">
