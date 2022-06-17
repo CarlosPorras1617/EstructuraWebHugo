@@ -32,7 +32,7 @@ class ViewsManager
     echo '<header>';
     include './views/navbar.php';
     echo '</header>';
-    echo '<body style="background: linear-gradient(#212121, #212121);
+    echo '<body style="background: white;
     width: 100vw;
     height: 100vh;">';
     echo '<div class="container">';
