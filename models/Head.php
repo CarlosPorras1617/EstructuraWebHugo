@@ -3,8 +3,8 @@
 */
 class Head {
   // Globar parameters
-  public $root = 'https://desarrollotestweb1.000webhostapp.com'; //Uncomment for local development
-  //public $root = 'http://localhost/EstructuraWeb/'; 
+  //public $root = 'https://desarrollotestweb1.000webhostapp.com'; //Uncomment for local development
+  public $root = 'http://localhost/EstructuraWeb/'; 
   public $title = "APP";
   // Constructor takes "title" as parameter
   function __construct()
