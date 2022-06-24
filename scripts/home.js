@@ -7,34 +7,27 @@ function getCaptchaResponse() {
         alert("Continuar con el envió del formulario");
     }
 }
-
 //Metodos del captcha
 function verifyCaptcha() {
     $("#g-recaptcha-error").hide(0);
 }
-
 $("#submitForm").click(function () {
     getCaptchaResponse();
 });
-
 //Inicializar documento que modifica un valor
 $(document).ready(function () {
     $('#divID').find('h5').eq(2).html('65');
     obtenerValoresSelect();
 });
-
 //modificación color
 $(document).ready(function () {
     $('#botonAcciones').click(function () {
         poscVal = $('#AccionesSelect').val();
         colorElegido = $('#seleccionColor').val();
         $('#divID').find('h5').eq(poscVal).css('color', colorElegido);
-        //elimina los valores del select para volverlos a renderizar y no se repitan
-        $('#AccionesSelect').find('option').remove();
-        obtenerValoresSelect(3);
+        obtenerValoresSelect();
     })
 })
-
 //modificacion
 $(document).ready(function () {
     $('#botonModificacion').click(function () {
@@ -49,12 +42,9 @@ $(document).ready(function () {
         $('#divID').find('h5').eq(poscVal).text(textVal);
         $('#texto').val('');
         $('#posicion').val('');
-        //elimina los valores del select para volverlos a renderizar y no se repitan
-        $('#PocisionSelect').find('option').remove();
-        obtenerValoresSelect(1);
+        obtenerValoresSelect();
     })
 })
-
 //agregar
 $(document).ready(function () {
     $('#botonAgregar').click(function () {
@@ -64,12 +54,9 @@ $(document).ready(function () {
         }
         $('#divID').append('<h5>' + textVal + '</h5>');
         $('#texto').val('');
-        //elimina los valores del select para volverlos a renderizar y no se repitan
-        $('#PocisionSelect').find('option').remove();
-        //obtenerValoresSelect();
+        obtenerValoresSelect();
     })
 })
-
 //eliminar
 $(document).ready(function () {
     $('#botonEliminar').click(function () {
@@ -79,12 +66,9 @@ $(document).ready(function () {
         }
         $('#divID').find('h5').eq(poscEliminar).remove();
         $('#posicionEliminar').val('');
-        //elimina los valores del select para volverlos a renderizar y no se repitan
-        $('#PocisionSelectEliminar').find('option').remove();
-        obtenerValoresSelect(2);
+        obtenerValoresSelect();
     })
 })
-
 //filtrar
 $(document).ready(function () {
     $('#filtrado').change(function () {
@@ -109,15 +93,13 @@ $(document).ready(function () {
                 if ($('#divID').find('h5').eq(valorFiltro)) {
                     obtenerEspecifico = $('#divID').find('h5').eq(valorFiltro).text();
                     alert(obtenerEspecifico);
-                    //$('#divID').find('h5').remove();
-                    //$('#divID').append('<h5>' + obtenerEspecifico + '</h5>');
-                }else{
+                } else {
                     alert("Ese elemento no existe");
                 }
 
 
             } else if (filtrado == 'lista' && valorFiltro != '') {
-                $('#divID').find('h5').gt(2);
+                alert($("h5:gt(" + filtrado + ")").text())
 
             } else {
                 alert("El filtro no puede estar vacio");
@@ -168,34 +150,17 @@ $(document).ready(function () {
     })
 })
 
-function obtenerValoresSelect(caso) {
-    //obtener valores de los output
-    //$(document).ready(function () {
-    //valorEtiqueta = $('#divID').val();
-    //console.log(valorEtiqueta)
+function obtenerValoresSelect() {
+    $('#PocisionSelectEliminar').empty();
+    $('#PocisionSelect').empty();
+    $('#AccionesSelect').empty();
     var outputConsultar = $('#divID').find('h5')
-    //console.log(outputConsultar);
     for (let index = 0; index < outputConsultar.length; index++) {
         const element = outputConsultar[index].innerHTML;
         console.log(element);
-        switch (caso) {
-            case 1:
-                $('#PocisionSelect').append('<option value=' + index + '>' + element + '</option>');
-                break;
-            case 2:
-                $('#PocisionSelectEliminar').append('<option value=' + index + '>' + element + '</option>');
-                break;
-            case 3:
-                $('#AccionesSelect').append('<option value=' + index + '>' + element + '</option>');
-                break;
-            default:
-                $('#AccionesSelect').append('<option value=' + index + '>' + element + '</option>');
-                $('#PocisionSelectEliminar').append('<option value=' + index + '>' + element + '</option>');
-                $('#PocisionSelect').append('<option value=' + index + '>' + element + '</option>');
-                break;
-        }
-        $('select').formSelect();
-        //console.log(index);
+        $('#AccionesSelect').append('<option value=' + index + '>' + element + '</option>');
+        $('#PocisionSelectEliminar').append('<option value=' + index + '>' + element + '</option>');
+        $('#PocisionSelect').append('<option value=' + index + '>' + element + '</option>');
     }
-    //});
+    $('select').formSelect();
 }
