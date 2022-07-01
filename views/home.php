@@ -12,32 +12,8 @@
         <option value="2">Editar</option>
         <option value="3">Eliminar</option>
         <option value="4">Acciones</option>
-        <option value="5">Filtrar</option>
     </select>
     <label>Seleccione un evento</label>
-</div>
-
-<!--Form Filtrar-->
-<div class="container" id="filtrar" style="display: none;">
-    <div class="row center">
-        <div class="col s12">
-            <div class="input-field col s6">
-                <select id="filtrado">
-                    <option value="" disabled selected>Escoga una opcion</option>
-                    <option value="especifico">Buscar Especifico</option>
-                    <option value="lista">Los Primeros:</option>
-                    <option value="esconder">Esconder Valores</option>
-                    <option value="aparecer">Aparecer Valores</option>
-                </select>
-                <label>Seleccione un filtro de búsqueda</label>
-            </div>
-            <div class="input-field col s6">
-                <input placeholder="Filtro" id="valorFiltro" type="number" class="validate">
-                <label for="valorFiltro">Filtro</label>
-            </div>
-            <a class="waves-effect waves-light btn" id="botonFiltrar">Filtrar</a>
-        </div>
-    </div>
 </div>
 
 <!--Form Acciones-->

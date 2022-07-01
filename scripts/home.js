@@ -28,6 +28,14 @@ $(document).ready(function () {
         obtenerValoresSelect();
     })
 })
+//scroll funcion
+$(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    console.log(scroll);
+    if (scroll >= 50 && scroll <= 90) {
+        alert('Nivel de scroll ' + scroll);
+    }
+});
 //modificacion
 $(document).ready(function () {
     $('#botonModificacion').click(function () {
@@ -47,7 +55,20 @@ $(document).ready(function () {
 })
 //agregar
 $(document).ready(function () {
-    $('#botonAgregar').click(function () {
+    $('#textoAgregar').keypress(function (e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        console.log(code);
+        if (code == 45) {
+            textVal = $('#textoAgregar').val();
+            if (textVal == '') {
+                textVal = "loren impsum"
+            }
+            $('#divID').append('<h5>' + textVal + '</h5>');
+            $('#texto').val('');
+            obtenerValoresSelect();
+        }
+    })
+    /*$('#botonAgregar').click(function () {
         textVal = $('#textoAgregar').val();
         if (textVal == '') {
             textVal = "loren impsum"
@@ -55,7 +76,7 @@ $(document).ready(function () {
         $('#divID').append('<h5>' + textVal + '</h5>');
         $('#texto').val('');
         obtenerValoresSelect();
-    })
+    })*/
 })
 //eliminar
 $(document).ready(function () {
@@ -69,83 +90,36 @@ $(document).ready(function () {
         obtenerValoresSelect();
     })
 })
-//filtrar
-$(document).ready(function () {
-    $('#filtrado').change(function () {
-        filtrado = $('#filtrado').val();
-        console.log(filtrado);
-        if (filtrado == 'esconder' || filtrado == 'aparecer') {
-            $('#botonFiltrar').attr('disabled', 'disabled');
-            $('#valorFiltro').attr('disabled', 'disabled');
-            if (filtrado == 'esconder') {
-                $('#divID').find('h5').hide();
-            } else if (filtrado == 'aparecer') {
-                $('#divID').find('h5').show(0);
-            }
-        }
-        if (filtrado == 'especifico' || filtrado == 'lista') {
-            $('#botonFiltrar').attr('disabled', false);
-            $('#valorFiltro').attr('disabled', false);
-        }
-        $('#botonFiltrar').click(function () {
-            valorFiltro = $('#valorFiltro').val();
-            if (filtrado == 'especifico' && valorFiltro != '') {
-                if ($('#divID').find('h5').eq(valorFiltro)) {
-                    obtenerEspecifico = $('#divID').find('h5').eq(valorFiltro).text();
-                    alert(obtenerEspecifico);
-                } else {
-                    alert("Ese elemento no existe");
-                }
-
-
-            } else if (filtrado == 'lista' && valorFiltro != '') {
-                alert($("h5:gt(" + filtrado + ")").text())
-
-            } else {
-                alert("El filtro no puede estar vacio");
-            }
-        })
-    })
-})
-
 //inputs mostrar en base al select
 $(document).ready(function () {
     $('#seleccion').on("change", function () {
+        //Animacion oculta y muestra los h5
+        $('#divID').fadeOut(800);
+        $('#divID').fadeIn(400);
         seleccionVal = $('#seleccion').val();
         if (seleccionVal == 2) {
             $("#editar").css('display', 'contents');
             $("#agregar").css('display', 'none');
             $("#eliminar").css('display', 'none');
             $("#acciones").css('display', 'none');
-            $("#filtrar").css('display', 'none');
         }
         if (seleccionVal == 1) {
             $("#agregar").css('display', 'contents');
             $("#editar").css('display', 'none');
             $("#eliminar").css('display', 'none');
             $("#acciones").css('display', 'none');
-            $("#filtrar").css('display', 'none');
         }
         if (seleccionVal == 3) {
             $("#agregar").css('display', 'none');
             $("#editar").css('display', 'none');
             $("#acciones").css('display', 'none');
-            $("#filtrar").css('display', 'none');
             $("#eliminar").css('display', 'contents');
         }
         if (seleccionVal == 4) {
             $("#agregar").css('display', 'none');
             $("#editar").css('display', 'none');
             $("#eliminar").css('display', 'none');
-            $("#filtrar").css('display', 'none');
             $("#acciones").css('display', 'contents');
-        }
-        if (seleccionVal == 5) {
-            $("#agregar").css('display', 'none');
-            $("#editar").css('display', 'none');
-            $("#eliminar").css('display', 'none');
-            $("#acciones").css('display', 'none');
-            $("#filtrar").css('display', 'contents');
         }
     })
 })
